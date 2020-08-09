@@ -31,7 +31,7 @@ class GameViewController: UIViewController {
     // -------------------------------------------------------------------------
     // MARK: - Gesture handling
     
-    func handleTap(_ gestureRecognize: UIGestureRecognizer) {
+    @objc func handleTap(_ gestureRecognize: UIGestureRecognizer) {
         if _level!.isFinished {
             levelTransition()
         }
@@ -42,7 +42,7 @@ class GameViewController: UIViewController {
     
     // -------------------------------------------------------------------------
     
-    func handlePlay(_ gestureRecognize: UIGestureRecognizer) {
+    @objc func handlePlay(_ gestureRecognize: UIGestureRecognizer) {
         if _level!.isFinished {
             levelTransition()
         }
@@ -53,7 +53,7 @@ class GameViewController: UIViewController {
     
     // -------------------------------------------------------------------------
     
-    func handleSwipe(_ gestureRecognize: UISwipeGestureRecognizer) {
+    @objc func handleSwipe(_ gestureRecognize: UISwipeGestureRecognizer) {
         if (gestureRecognize.direction == .left) {
             rbDebug("Handle swipe left")
             _level!.handleGameKey(.left)
@@ -101,11 +101,11 @@ class GameViewController: UIViewController {
         
         // Add gestures
         let playRecognizer = UITapGestureRecognizer(target: self, action: #selector(handlePlay(_:)))
-        playRecognizer.allowedPressTypes = [NSNumber(value: UIPressType.playPause.rawValue)]
+        playRecognizer.allowedPressTypes = [NSNumber(value: UIPress.PressType.playPause.rawValue)]
         self.view.addGestureRecognizer(playRecognizer)
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        tapRecognizer.allowedPressTypes = [NSNumber(value: UIPressType.select.rawValue)]
+        tapRecognizer.allowedPressTypes = [NSNumber(value: UIPress.PressType.select.rawValue)]
         self.view.addGestureRecognizer(tapRecognizer)
         
         let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))

@@ -48,7 +48,7 @@ extension SKSpriteNode {
         effectNode.shouldRasterize = true
         addChild(effectNode)
         effectNode.addChild(SKSpriteNode(texture: texture))
-        effectNode.filter = CIFilter(name: "CIGaussianBlur", withInputParameters: ["inputRadius":radius])
+        effectNode.filter = CIFilter(name: "CIGaussianBlur", parameters: ["inputRadius":radius])
     }
 }
 

@@ -16,7 +16,7 @@ import Foundation
 
     extension NSImage {
         class func getImage(named name: String) -> NSImage? {
-            return NSImage(named: NSImage.Name(name))
+            return NSImage(named: name)
         }
     }
     
